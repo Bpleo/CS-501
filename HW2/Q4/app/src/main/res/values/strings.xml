@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Simple Calculator</string>
+    <string name="div_zero_error_message">ERROR: cannot divided by zero!</string>
+    <string name="mod_zero_error_message">ERROR: cannot mod by zero!</string>
+    <string name="empty_input_error_message">ERROR: please enter number!</string>
+    <string name="error">ERROR</string>
+    <string name="add_icon">ADD</string>
+    <string name="subtract_icon">SUBTRACT</string>
+    <string name="multiply_icon">MULTIPLY</string>
+    <string name="divide_icon">DIVIDE</string>
+    <string name="modulus_icon">MOD</string>
+    <string name="calculate_button">Calculate!</string>
+</resources>
