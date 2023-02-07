@@ -3,6 +3,7 @@
     <string name="div_zero_error_message">ERROR: cannot divided by zero!</string>
     <string name="mod_zero_error_message">ERROR: cannot mod by zero!</string>
     <string name="empty_input_error_message">ERROR: please enter number!</string>
+    <string name="invalid_number_error_message">ERROR: please enter valid number!</string>
     <string name="error">ERROR</string>
     <string name="add_icon">ADD</string>
     <string name="subtract_icon">SUBTRACT</string>
