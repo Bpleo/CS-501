@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,8 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         calculate_button.setOnClickListener {
             if (!assertNotEmpty()) return@setOnClickListener
-            val first = first_num.text.toString().toInt()
-            val second = second_num.text.toString().toInt()
+            if (!assertValidNumber()) return@setOnClickListener
+            val first = first_num.text.toString().toDouble()
+            val second = second_num.text.toString().toDouble()
 
             val selected = operation_selection.checkedRadioButtonId
             operation = findViewById(selected)
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             return true
         }
 
+        result.text = getString(R.string.error)
         Toast.makeText(
             this,
             R.string.empty_input_error_message,
@@ -72,21 +75,41 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    private fun add(first: Int, second: Int) {
-        result.text = (first + second).toString()
+    private fun assertValidNumber(): Boolean {
+        return try {
+            val first = first_num.text.toString().toDouble()
+            val second = second_num.text.toString().toDouble()
+            true
+        } catch (e: NumberFormatException) {
+            result.text = getString(R.string.error)
+            Toast.makeText(
+                this,
+                R.string.invalid_number_error_message,
+                Toast.LENGTH_SHORT
+            ).show()
+            false
+        }
     }
 
-    private fun subtract(first: Int, second: Int) {
-        result.text = (first - second).toString()
+    private fun round(num: Double): Double {
+       return (num * 100.0).roundToInt() / 100.0
     }
 
-    private fun multiply(first: Int, second: Int) {
-        result.text = (first * second).toString()
+    private fun add(first: Double, second: Double) {
+        result.text = round(first + second).toString()
     }
 
-    private fun divide(first: Int, second: Int) {
-        if (second != 0) {
-            result.text = (first.toDouble() / second).toString()
+    private fun subtract(first: Double, second: Double) {
+        result.text = round(first - second).toString()
+    }
+
+    private fun multiply(first: Double, second: Double) {
+        result.text = round(first * second).toString()
+    }
+
+    private fun divide(first: Double, second: Double) {
+        if (second != 0.0) {
+            result.text = round(first / second).toString()
         }
         else {
             result.text = getString(R.string.error)
@@ -99,9 +122,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun mod(first: Int, second: Int) {
-        if (second != 0) {
-            result.text = (first % second).toString()
+    private fun mod(first: Double, second: Double) {
+        if (second != 0.0) {
+            result.text = round(first % second).toString()
         }
         else {
             result.text = getString(R.string.error)
