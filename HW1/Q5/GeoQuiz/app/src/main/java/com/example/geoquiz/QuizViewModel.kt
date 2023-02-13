@@ -16,6 +16,15 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         Question(R.string.question_americas, true),
         Question(R.string.question_asia, true)
     )
+    private var trueAble: Boolean = true
+    private var falseAble: Boolean = true
+
+    var currentTrueAble: Boolean
+        get() = trueAble
+        set(value) {trueAble = value}
+    var currentFalseAble: Boolean
+        get() = falseAble
+        set(value) {falseAble = value}
 
     var isCheater: Boolean
         get() = savedStateHandle.get(IS_CHEATER_KEY) ?: false
@@ -32,10 +41,14 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
     fun moveToNext() {
         currentIndex = (currentIndex + 1) % questionBank.size
         isCheater = false
+        trueAble = true
+        falseAble = true
     }
     fun moveToPrev() {
         currentIndex = (currentIndex - 1) % questionBank.size
         if (currentIndex == -1) currentIndex = questionBank.size-1
         isCheater = false
+        trueAble = true
+        falseAble = true
     }
 }

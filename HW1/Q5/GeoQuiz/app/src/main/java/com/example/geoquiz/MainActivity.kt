@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val quizViewModel: QuizViewModel by viewModels()
-
+    private var checked: Boolean = false
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.trueButton.isEnabled = quizViewModel.currentTrueAble
+        binding.falseButton.isEnabled = quizViewModel.currentFalseAble
         Log.d(TAG, "Got a QuizViewModel: $quizViewModel")
         binding.trueButton.setOnClickListener { view: View ->
 //            Toast.makeText(
@@ -104,8 +105,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateQuestion() {
         val questionTextResId = quizViewModel.currentQuestionText
         binding.questionTextView.setText(questionTextResId)
-        binding.trueButton.isEnabled = true;
-        binding.falseButton.isEnabled = true;
+        binding.trueButton.isEnabled = quizViewModel.currentTrueAble
+        binding.falseButton.isEnabled = quizViewModel.currentFalseAble
     }
 
     private fun checkAnswer(userAnswer: Boolean, view: View) {
@@ -117,8 +118,10 @@ class MainActivity : AppCompatActivity() {
         }
         Snackbar.make(view, messageResId, BaseTransientBottomBar.LENGTH_SHORT
         ).show()
-        binding.trueButton.isEnabled = false;
-        binding.falseButton.isEnabled = false;
+        quizViewModel.currentTrueAble = false
+        quizViewModel.currentFalseAble = false
+        binding.trueButton.isEnabled = quizViewModel.currentTrueAble
+        binding.falseButton.isEnabled = quizViewModel.currentFalseAble
     }
 
 
