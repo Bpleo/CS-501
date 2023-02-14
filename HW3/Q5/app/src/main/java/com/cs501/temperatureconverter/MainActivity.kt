@@ -2,6 +2,7 @@ package com.cs501.temperatureconverter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fahrenheitSeekBar: SeekBar
     private lateinit var celsiusTextView: TextView
     private lateinit var fahrenheitTextView: TextView
-    private lateinit var constraintLayout: ConstraintLayout
+    private lateinit var linearLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         fahrenheitSeekBar = findViewById(R.id.fahrenheit_seekbar)
         celsiusTextView = findViewById(R.id.celsius_text)
         fahrenheitTextView = findViewById(R.id.fahrenheit_text)
-        constraintLayout = findViewById(R.id.constraintLayout)
+        linearLayout = findViewById(R.id.linearLayout)
 
         celsiusSeekBar.max = celsiusMax - celsiusMin
         fahrenheitSeekBar.max = fahrenheitMax - fahrenheitMin
@@ -73,9 +74,9 @@ class MainActivity : AppCompatActivity() {
         celsiusTextView.text = "$celsius°C"
         fahrenheitTextView.text = "$fahrenheit°F"
         if (celsius <= 20) {
-            Snackbar.make(constraintLayout, "I wish it were warmer.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(linearLayout, "I wish it were warmer.", Snackbar.LENGTH_SHORT).show()
         } else {
-            Snackbar.make(constraintLayout, "I wish it were colder.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(linearLayout, "I wish it were colder.", Snackbar.LENGTH_SHORT).show()
         }
     }
 }
