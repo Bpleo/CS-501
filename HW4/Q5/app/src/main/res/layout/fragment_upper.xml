@@ -31,7 +31,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row0_col1"
             android:layout_width="0dp"
@@ -41,7 +43,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row0_col2"
             android:layout_width="0dp"
@@ -51,7 +55,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row0_col3"
             android:layout_width="0dp"
@@ -61,7 +67,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
 
         <Button
             android:id="@+id/row1_col0"
@@ -72,7 +80,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row1_col1"
             android:layout_width="0dp"
@@ -82,7 +92,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row1_col2"
             android:layout_width="0dp"
@@ -92,7 +104,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row1_col3"
             android:layout_width="0dp"
@@ -102,7 +116,9 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            tools:ignore="UsingOnClickXml"
+            android:onClick="tapOnLetter"/>
 
         <Button
             android:id="@+id/row2_col0"
@@ -113,7 +129,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row2_col1"
             android:layout_width="0dp"
@@ -123,7 +140,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row2_col2"
             android:layout_width="0dp"
@@ -133,7 +151,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a" />
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row2_col3"
             android:layout_width="0dp"
@@ -143,7 +162,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
 
         <Button
             android:id="@+id/row3_col0"
@@ -154,7 +174,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row3_col1"
             android:layout_width="0dp"
@@ -164,7 +185,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row3_col2"
             android:layout_width="0dp"
@@ -174,7 +196,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
         <Button
             android:id="@+id/row3_col3"
             android:layout_width="0dp"
@@ -184,7 +207,8 @@
             android:textAlignment="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="@string/a"/>
+            android:text="@string/a"
+            android:onClick="tapOnLetter"/>
     </GridLayout>
 
 
@@ -194,7 +218,7 @@
         android:layout_height="80dp"
         android:padding="10dp"
         android:textSize="48sp"
-        android:text="myword" />
+         />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -208,7 +232,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/clear"/>
+            android:text="@string/clear"
+            android:onClick="onClear"/>
         <Button
             android:id="@+id/btnSubmit"
             android:layout_margin="2dp"
