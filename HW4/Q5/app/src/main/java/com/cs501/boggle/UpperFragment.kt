@@ -31,6 +31,7 @@ class UpperFragment : Fragment() {
     private lateinit var fragmentView: View
 
     private var existWordDict = HashSet<String>()
+    private val vowels = setOf('A', 'E', 'I', 'O', 'U')
     private var board1 = arrayOf('S', 'T', 'N', 'G',
                                 'E', 'I', 'A', 'E',
                                 'D', 'R', 'L', 'S',
@@ -78,7 +79,7 @@ class UpperFragment : Fragment() {
     }
 
 
-    fun onSubmit(view: View) {
+    fun onSubmit(view: View): Int {
         val word = (inputWord?.text).toString().uppercase()
         if (containsTwoVowels(word) && hasEnoughLen(word) && isWordValid(word)) {
             Toast.makeText(
@@ -86,12 +87,27 @@ class UpperFragment : Fragment() {
                 R.string.correct_message,
                 Toast.LENGTH_SHORT
             ).show()
+
             existWordDict.add(word)
+            return calculateScore(word)
         }
+
+        if (existWordDict.contains(word)) return 0
+
+        return -10
+    }
+
+    private fun calculateScore(word: String): Int {
+        var score = 0
+
+        for (c in word) {
+            score += if (c in vowels) 5 else 1
+        }
+
+        return score
     }
 
     private fun containsTwoVowels(word: String): Boolean {
-        val vowels = setOf('A', 'E', 'I', 'O', 'U')
         var count = 0
 
         for (c in word) {
@@ -192,6 +208,11 @@ class UpperFragment : Fragment() {
         selectedLetter = mutableListOf<Int>()
         inputWord?.text = ""
         prevWordId = null
+    }
+
+    fun resetGame() {
+        resetBoard()
+        existWordDict.clear() // Clear HashSet
     }
 
     fun tapOnLetter(view: View) {
