@@ -70,7 +70,7 @@ class UpperFragment : Fragment() {
         }
     }
 
-    fun onSubmit(view: View) {
+    fun onSubmit(view: View): Int{
         val word = (inputWord?.text).toString().uppercase()
         if (containsTwoVowels(word) && hasEnoughLen(word) && isWordValid(word)) {
             Toast.makeText(
@@ -80,6 +80,7 @@ class UpperFragment : Fragment() {
             ).show()
             existWordDict.add(word)
         }
+        return 1
     }
 
     private fun containsTwoVowels(word: String): Boolean {

@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     var upperFragment = UpperFragment()
     var lowerFragment = LowerFragment()
+
+    private var score: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,6 +57,20 @@ class MainActivity : AppCompatActivity() {
 
     // user click on Submit
     fun onSubmit(view: View) {
-        upperFragment.onSubmit(view)
+        score += upperFragment.onSubmit(view)
+        lowerFragment.updateScore(score)
+    }
+
+    fun onNewGame(view: View) {
+        introMessageLayout!!.visibility = View.VISIBLE
+        appContentLayout!!.visibility = View.INVISIBLE
+        upperFragment = UpperFragment()
+        lowerFragment = LowerFragment()
+        score = 0
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.FLUpperFragment, upperFragment)
+            replace(R.id.FLLowerFragment, lowerFragment)
+            commit()
+        }
     }
 }
