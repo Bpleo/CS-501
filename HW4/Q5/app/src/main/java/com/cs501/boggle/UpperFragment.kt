@@ -58,7 +58,6 @@ class UpperFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentView = view
-        setIdLocMap(view)
         generateRandomBoard(view)
         inputWord = view.findViewById<TextView>(R.id.inputWord)
     }
