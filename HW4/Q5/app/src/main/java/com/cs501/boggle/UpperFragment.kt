@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import okhttp3.*
 import java.io.IOException
+import kotlin.random.Random
 
 
 /**
@@ -30,6 +31,19 @@ class UpperFragment : Fragment() {
     private lateinit var fragmentView: View
 
     private var existWordDict = HashSet<String>()
+    private var board1 = arrayOf('S', 'T', 'N', 'G',
+                                'E', 'I', 'A', 'E',
+                                'D', 'R', 'L', 'S',
+                                'S', 'E', 'P', 'O' )
+    private var board2 = arrayOf('S', 'P', 'L', 'D',
+                                'E', 'A', 'I', 'E',
+                                'D', 'R', 'T', 'N',
+                                'S', 'E', 'A', 'S' )
+    private var board3 = arrayOf('S', 'E', 'R', 'S',
+                                'P', 'A', 'T', 'G',
+                                'L', 'I', 'N', 'E',
+                                'S', 'E', 'R', 'S' )
+    private var boards = arrayOf(board1, board2, board3)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,24 +65,19 @@ class UpperFragment : Fragment() {
 
     private fun generateRandomBoard(view: View) {
         // Randomly generate the letters in the board
-        val letters = mutableListOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
-        val gridLayout = view.findViewById<GridLayout>(R.id.gridLayout)
-        for (i in 0 until gridLayout.childCount) {
-            val button = gridLayout.getChildAt(i) as Button
-            button.text = letters.random().toString()
-        }
-    }
-
-    private fun setIdLocMap(view: View) {
+        val boardNum = Random.nextInt(3)
         val gridLayout = view.findViewById<GridLayout>(R.id.gridLayout)
         var firstId = 0
         for (i in 0 until gridLayout.childCount) {
             val button = gridLayout.getChildAt(i) as Button
             if (i == 0) firstId = button.id
+            button.text = boards[boardNum][i].toString()
+            val newEntry = button.id to intArrayOf((button.id-firstId)/4, (button.id-firstId)%4)
             idLocationMap = idLocationMap.toMutableMap()
-            idLocationMap += button.id to intArrayOf((button.id-firstId)/4, (button.id-firstId)%4)
+            idLocationMap += newEntry
         }
     }
+
 
     fun onSubmit(view: View) {
         val word = (inputWord?.text).toString().uppercase()
@@ -140,7 +149,7 @@ class UpperFragment : Fragment() {
         StrictMode.setThreadPolicy(policy)
 
         val url = "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt"
-        val wordList = downloadWordList(url).split("\n").toSet()
+        val wordList = downloadWordList(url).split("\n").toSet().map { it.uppercase() }
         if (word !in wordList) {
             Toast.makeText(
                 activity,
