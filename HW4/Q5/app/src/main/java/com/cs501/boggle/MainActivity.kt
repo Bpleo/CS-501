@@ -34,4 +34,9 @@ class MainActivity : AppCompatActivity() {
     fun onClear(view: View) {
         upperFragment.onClear(view)
     }
+
+    // user click on Submit
+    fun onSubmit(view: View) {
+        upperFragment.onSubmit(view)
+    }
 }

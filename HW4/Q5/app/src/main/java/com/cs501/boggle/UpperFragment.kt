@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 
@@ -56,6 +57,11 @@ class UpperFragment : Fragment() {
             idLoactionMap+= newEntry
         }
 
+    }
+
+    fun onSubmit(view: View) {
+//        TODO: Check the input word
+        println("Submit Clicked user's input is "+ inputWord?.text)
     }
 
     fun onClear(view: View) {
