@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     var appContentLayout: ConstraintLayout? = null
     var tvWelcomeMessage: TextView? = null
 
-    private var inputWord: TextView? = null
     var upperFragment = UpperFragment()
     var lowerFragment = LowerFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
