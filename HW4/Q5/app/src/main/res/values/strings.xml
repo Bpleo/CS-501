@@ -4,5 +4,10 @@
     <string name="clear">clear</string>
     <string name="submit">Submit</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="invalidInput">You can only input letter that is adjacent to the previous one.</string>
+    <string name="not_adjacent_click_error_message">ERROR: You can only input letter that is adjacent to the previous one.</string>
+    <string name="not_enough_vowels_incorrect_message">INCORRECT: You need at least two vowels in word! (-10 pts)</string>
+    <string name="not_enough_length_incorrect_message">INCORRECT: You need at least 4 chars long! (-10 pts)</string>
+    <string name="word_exist_incorrect_message">INCORRECT: Word generated before!</string>
+    <string name="word_not_valid_incorrect_message">INCORRECT: Not a valid word!</string>
+    <string name="correct_message">CORRECT!!!</string>
 </resources>
