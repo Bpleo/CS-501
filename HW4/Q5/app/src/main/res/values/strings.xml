@@ -5,4 +5,6 @@
     <string name="submit">Submit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="invalidInput">You can only input letter that is adjacent to the previous one.</string>
+    <string name="welcome_to_boggle">Welcome to Boggle</string>
+    <string name="rules">Rules:\n- Your first letter can start anywhere.\n- Subsequent letter connections must “touch” the previous letter. (in any direction, including diagonally.)\n- Only use a letter in the current word once.\n- All words must utilize a minimum of two vowels.\n- cannot generate the same word more than once.\n- Words must be at least 4 chars long.\nScoring:\n- Every consonant in a word is worth one point.\n- Every vowel is worth 5 points.\n- use one or more of the consonants ‘S’, ‘Z’, ‘P’, ‘X’ or ‘Q’ the value of the word is doubled.\n- Incorrect responses reduce the score by 10 points, regardless of word length.\n-There is no time limit.</string>
 </resources>

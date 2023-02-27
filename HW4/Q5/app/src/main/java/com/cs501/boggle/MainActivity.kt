@@ -1,18 +1,31 @@
 package com.cs501.boggle
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
-import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+
 
 class MainActivity : AppCompatActivity() {
+    var introMessageLayout: RelativeLayout? = null
+    var appContentLayout: ConstraintLayout? = null
+    var tvWelcomeMessage: TextView? = null
+
     private var inputWord: TextView? = null
     var upperFragment = UpperFragment()
     var lowerFragment = LowerFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        introMessageLayout = findViewById(R.id.welcomeMessageLayout)
+        appContentLayout = findViewById(R.id.appContentLayout)
+
+        tvWelcomeMessage = findViewById(R.id.welcomeMessage)
+        tvWelcomeMessage?.movementMethod = ScrollingMovementMethod()
 
 
         // setting up the upper fragment & lower fragment
@@ -23,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    // user click "Got it" in the welcome message box
+    fun dismissWelcomeMessageBox(view: View?) {
+        introMessageLayout!!.visibility = View.INVISIBLE
+        appContentLayout!!.visibility = View.VISIBLE
     }
 
     // user click on a letter
