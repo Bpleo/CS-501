@@ -14,7 +14,7 @@
         android:layout_weight="1"
         >
         <TextView
-            android:id="@+id/score"
+            android:id="@+id/txtScore"
 
             android:layout_margin="2dp"
             android:layout_width="0dp"
@@ -25,7 +25,7 @@
             />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnNewGame"
             android:layout_margin="2dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
