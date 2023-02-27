@@ -21,7 +21,7 @@ class UpperFragment : Fragment() {
     private var inputWord: TextView? = null
 
     private var prevWordId: Int? = null
-    private var idLoactionMap = mapOf<Int, IntArray> ()
+    private var idLocationMap = mapOf<Int, IntArray> ()
     private var selectedLetter = mutableListOf<Int>()
     private lateinit var fragmentView: View
 
@@ -53,8 +53,8 @@ class UpperFragment : Fragment() {
             if (i == 0) firstId = button.id
             button.text = letters.random().toString()
             val newEntry = button.id to intArrayOf((button.id-firstId)/4, (button.id-firstId)%4)
-            idLoactionMap = idLoactionMap.toMutableMap()
-            idLoactionMap+= newEntry
+            idLocationMap = idLocationMap.toMutableMap()
+            idLocationMap+= newEntry
         }
 
     }
@@ -93,10 +93,10 @@ class UpperFragment : Fragment() {
 
     fun isValidInput(currWordId: Int): Boolean {
         if (prevWordId==null) return true
-        return areAdjacent(idLoactionMap[prevWordId]?.get(0) ?: -1,
-            idLoactionMap[prevWordId]?.get(1) ?: -1,
-            idLoactionMap[currWordId]?.get(0) ?: -1,
-            idLoactionMap[currWordId]?.get(1) ?: -1)
+        return areAdjacent(idLocationMap[prevWordId]?.get(0) ?: -1,
+            idLocationMap[prevWordId]?.get(1) ?: -1,
+            idLocationMap[currWordId]?.get(0) ?: -1,
+            idLocationMap[currWordId]?.get(1) ?: -1)
     }
 
     fun areAdjacent(row1: Int, col1: Int, row2: Int, col2: Int): Boolean {
