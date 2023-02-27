@@ -82,6 +82,12 @@ class UpperFragment : Fragment() {
             (view as Button).setBackgroundColor(Color.RED)
             (view as Button).isEnabled = false
             selectedLetter.add(id)
+        } else {
+            Toast.makeText(
+                activity,
+                R.string.invalidInput,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
