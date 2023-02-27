@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import okhttp3.*
 import java.io.IOException
+import kotlin.random.Random
 
 
 /**
@@ -30,6 +31,20 @@ class UpperFragment : Fragment() {
     private lateinit var fragmentView: View
 
     private var existWordDict = HashSet<String>()
+    private val vowels = setOf('A', 'E', 'I', 'O', 'U')
+    private var board1 = arrayOf('S', 'T', 'N', 'G',
+                                'E', 'I', 'A', 'E',
+                                'D', 'R', 'L', 'S',
+                                'S', 'E', 'P', 'O' )
+    private var board2 = arrayOf('S', 'P', 'L', 'D',
+                                'E', 'A', 'I', 'E',
+                                'D', 'R', 'T', 'N',
+                                'S', 'E', 'A', 'S' )
+    private var board3 = arrayOf('S', 'E', 'R', 'S',
+                                'P', 'A', 'T', 'G',
+                                'L', 'I', 'N', 'E',
+                                'S', 'E', 'R', 'S' )
+    private var boards = arrayOf(board1, board2, board3)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,33 +59,26 @@ class UpperFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentView = view
-        setIdLocMap(view)
         generateRandomBoard(view)
         inputWord = view.findViewById<TextView>(R.id.inputWord)
     }
 
     private fun generateRandomBoard(view: View) {
         // Randomly generate the letters in the board
-        val letters = mutableListOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
-        val gridLayout = view.findViewById<GridLayout>(R.id.gridLayout)
-        for (i in 0 until gridLayout.childCount) {
-            val button = gridLayout.getChildAt(i) as Button
-            button.text = letters.random().toString()
-        }
-    }
-
-    private fun setIdLocMap(view: View) {
+        val boardNum = Random.nextInt(3)
         val gridLayout = view.findViewById<GridLayout>(R.id.gridLayout)
         var firstId = 0
         for (i in 0 until gridLayout.childCount) {
             val button = gridLayout.getChildAt(i) as Button
             if (i == 0) firstId = button.id
+            button.text = boards[boardNum][i].toString()
+            val newEntry = button.id to intArrayOf((button.id-firstId)/4, (button.id-firstId)%4)
             idLocationMap = idLocationMap.toMutableMap()
-            idLocationMap += button.id to intArrayOf((button.id-firstId)/4, (button.id-firstId)%4)
+            idLocationMap += newEntry
         }
     }
 
-    fun onSubmit(view: View): Int{
+    fun onSubmit(view: View): Int {
         val word = (inputWord?.text).toString().uppercase()
         if (containsTwoVowels(word) && hasEnoughLen(word) && isWordValid(word)) {
             Toast.makeText(
@@ -79,12 +87,25 @@ class UpperFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
             existWordDict.add(word)
+            return calculateScore(word)
         }
-        return 1
+
+        if (existWordDict.contains(word)) return 0
+
+        return -10
+    }
+
+    private fun calculateScore(word: String): Int {
+        var score = 0
+
+        for (c in word) {
+            score += if (c in vowels) 5 else 1
+        }
+
+        return score
     }
 
     private fun containsTwoVowels(word: String): Boolean {
-        val vowels = setOf('A', 'E', 'I', 'O', 'U')
         var count = 0
 
         for (c in word) {
@@ -141,7 +162,7 @@ class UpperFragment : Fragment() {
         StrictMode.setThreadPolicy(policy)
 
         val url = "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt"
-        val wordList = downloadWordList(url).split("\n").toSet()
+        val wordList = downloadWordList(url).split("\n").toSet().map { it.uppercase() }
         if (word !in wordList) {
             Toast.makeText(
                 activity,
@@ -185,6 +206,11 @@ class UpperFragment : Fragment() {
         selectedLetter = mutableListOf<Int>()
         inputWord?.text = ""
         prevWordId = null
+    }
+
+    fun resetGame() {
+        resetBoard()
+        existWordDict.clear() // Clear HashSet
     }
 
     fun tapOnLetter(view: View) {

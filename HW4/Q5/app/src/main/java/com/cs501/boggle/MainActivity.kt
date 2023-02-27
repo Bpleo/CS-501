@@ -10,12 +10,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 
 class MainActivity : AppCompatActivity() {
-    var introMessageLayout: RelativeLayout? = null
-    var appContentLayout: ConstraintLayout? = null
-    var tvWelcomeMessage: TextView? = null
+    private var introMessageLayout: RelativeLayout? = null
+    private var appContentLayout: ConstraintLayout? = null
+    private var tvWelcomeMessage: TextView? = null
 
-    var upperFragment = UpperFragment()
-    var lowerFragment = LowerFragment()
+    private var upperFragment = UpperFragment()
+    private var lowerFragment = LowerFragment()
 
     private var score: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     // user click on Submit
     fun onSubmit(view: View) {
         score += upperFragment.onSubmit(view)
+        upperFragment.resetBoard()
         lowerFragment.updateScore(score)
     }
 
