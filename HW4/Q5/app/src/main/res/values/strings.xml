@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Boggle</string>
+    <string name="a">A</string>
+    <string name="clear">clear</string>
+    <string name="submit">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="not_adjacent_click_error_message">ERROR: You can only input letter that is adjacent to the previous one.</string>
+    <string name="not_enough_vowels_incorrect_message">INCORRECT: You need at least two vowels in word! (-10 pts)</string>
+    <string name="not_enough_length_incorrect_message">INCORRECT: You need at least 4 chars long! (-10 pts)</string>
+    <string name="word_exist_incorrect_message">INCORRECT: Word generated before!</string>
+    <string name="word_not_valid_incorrect_message">INCORRECT: Not a valid word!</string>
+    <string name="correct_message">CORRECT!!!</string>
+    <string name="welcome_to_boggle">Welcome to Boggle</string>
+    <string name="rules">Rules:\n- Your first letter can start anywhere.\n- Subsequent letter connections must “touch” the previous letter. (in any direction, including diagonally.)\n- Only use a letter in the current word once.\n- All words must utilize a minimum of two vowels.\n- cannot generate the same word more than once.\n- Words must be at least 4 chars long.\nScoring:\n- Every consonant in a word is worth one point.\n- Every vowel is worth 5 points.\n- use one or more of the consonants ‘S’, ‘Z’, ‘P’, ‘X’ or ‘Q’ the value of the word is doubled.\n- Incorrect responses reduce the score by 10 points, regardless of word length.\n-There is no time limit.</string>
+</resources>
