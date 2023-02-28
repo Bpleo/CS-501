@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     // user click on Submit
     fun onSubmit(view: View) {
         score += upperFragment.onSubmit(view)
+        score = if (score < 0) 0 else score
         upperFragment.resetBoard()
         lowerFragment.updateScore(score)
     }

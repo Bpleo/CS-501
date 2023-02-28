@@ -95,7 +95,7 @@ class UpperFragment : Fragment() {
         return -10
     }
 
-    private fun calculateScore(word: String): Int {
+    fun calculateScore(word: String): Int {
         var score = 0
 
         for (c in word) {
@@ -105,7 +105,7 @@ class UpperFragment : Fragment() {
         return score
     }
 
-    private fun containsTwoVowels(word: String): Boolean {
+    fun containsTwoVowels(word: String): Boolean {
         var count = 0
 
         for (c in word) {
@@ -128,7 +128,7 @@ class UpperFragment : Fragment() {
         return false
     }
 
-    private fun hasEnoughLen(word: String): Boolean {
+    fun hasEnoughLen(word: String): Boolean {
         if (word.length >= 4) {
             return true
         }
@@ -144,7 +144,7 @@ class UpperFragment : Fragment() {
         return false
     }
 
-    private fun isWordValid(word: String): Boolean {
+    fun isWordValid(word: String): Boolean {
         if (existWordDict.contains(word)) {
             Toast.makeText(
                 activity,
@@ -178,7 +178,7 @@ class UpperFragment : Fragment() {
         return true
     }
 
-    fun downloadWordList(url: String): String {
+    private fun downloadWordList(url: String): String {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(url)
